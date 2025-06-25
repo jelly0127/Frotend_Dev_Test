@@ -17,8 +17,8 @@ const GraphQL = () => {
   const [rawData, setRawData] = useState<APIResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [tokenIds, setTokenIds] = useState('5712');
-  const [queryType, setQueryType] = useState<'single' | 'multiple' | 'range'>('single');
+  const [tokenIds, setTokenIds] = useState('5712,2122,3344,5321,4367,6567,8123');
+  const [queryType, setQueryType] = useState<'single' | 'multiple' | 'range'>('multiple');
   const [rangeStart, setRangeStart] = useState('1');
   const [rangeEnd, setRangeEnd] = useState('10');
   const [imageUrls, setImageUrls] = useState<{ [key: string]: string }>({});
@@ -243,7 +243,7 @@ const GraphQL = () => {
               <button
                 onClick={() => setQueryType('multiple')}
                 className={classNames(`px-4 py-2 rounded-md text-sm font-medium transition-all ${queryType === 'multiple'
-                  ? 'bg-[#FCD535] text-black shadow-lg'
+                  ? 'bg-blue-500 text-white shadow-lg'
                   : 'text-gray-400 hover:text-white'
                   }`)}
               >
@@ -252,7 +252,7 @@ const GraphQL = () => {
               <button
                 onClick={() => setQueryType('range')}
                 className={classNames(`px-4 py-2 rounded-md text-sm font-medium transition-all ${queryType === 'range'
-                  ? 'bg-[#FCD535] text-black shadow-lg'
+                  ? 'bg-blue-500 text-white shadow-lg'
                   : 'text-gray-400 hover:text-white'
                   }`)}
               >
@@ -350,10 +350,13 @@ const GraphQL = () => {
               {nftDataList.map((nftData) => (
                 <div
                   key={`${nftData.contract}-${nftData.token_id}`}
-                  className="bg-gradient-to-br from-gray-800/95 to-gray-900/95 hover:border-blue-500/20 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-700/50 overflow-hidden hover:shadow-blue-500/20 transition-all duration-300 "
+                  className="group bg-gradient-to-br from-gray-800/95 to-gray-900/95 hover:border-[#FCD535] backdrop-blur-sm rounded-2xl shadow-lg border-2 border-[#FCD535]/20 overflow-hidden hover:shadow-[#FCD535]/20 hover:shadow-xl transition-all duration-300 hover:cursor-pointer shadow-[#FCD535]/20"
                 >
                   {/* NFT Image */}
-                  <NFTCard nftData={nftData} imageUrls={imageUrls} imageLoadingStates={imageLoadingStates} loadImageWithFallback={loadImageWithFallback} />
+                  <div className='group-hover:scale-105 transition-all duration-300'>
+                    <NFTCard nftData={nftData} imageUrls={imageUrls} imageLoadingStates={imageLoadingStates} loadImageWithFallback={loadImageWithFallback} />
+
+                  </div>
 
                   {/* NFT Information */}
                   <div className="p-4">

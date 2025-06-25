@@ -27,14 +27,14 @@ const CartExample: React.FC = () => {
     setProducts(sampleProducts.slice(0, nextPage * LIMIT));
     setTimeout(() => {
       setIsLoadingMore(false);
-    }, 2000);
+    }, 1000);
   };
 
   useEffect(() => {
     setTimeout(() => {
       setProducts(sampleProducts.slice(0, 4))
       setIsLoadingMore(false);
-    }, 2000)
+    }, 1000)
   }, [])
 
   return (

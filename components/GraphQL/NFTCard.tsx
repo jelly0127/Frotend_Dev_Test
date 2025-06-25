@@ -11,7 +11,7 @@ interface NFTCardProps {
 }
 const NFTCard = ({ nftData, imageUrls, imageLoadingStates, loadImageWithFallback }: NFTCardProps) => {
   return (
-    <div className="relative border-2 border-gray-700/50 hover:border-blue-500/20 hover:cursor-pointer transition-all duration-300 ">
+    <div className="relative  ">
       {imageLoadingStates[nftData.image] ? (
         <div className="w-full h-60 bg-gray-800 flex items-center justify-center">
           <div className="flex flex-col items-center gap-2">
