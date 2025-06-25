@@ -214,7 +214,7 @@ const GraphQL = () => {
   return (
     <div className=" h-full  py-8">
       <div className="max-w-6xl mx-auto p-6">
-        <h1 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+        <h1 className="text-2xl md:text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
           Pudgy Penguins NFT Data Display
         </h1>
 
@@ -225,12 +225,15 @@ const GraphQL = () => {
             <div className="flex bg-gray-800 rounded-lg p-1 border border-gray-600">
               <button
                 onClick={() => setQueryType('single')}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${queryType === 'single'
-                  ? 'bg-blue-500 text-white shadow-lg'
-                  : 'text-gray-400 hover:text-white'
-                  }`}
+                className={classNames(
+                  'md:px-4 md:py-2 px-2 py-1 rounded-md text-sm font-medium transition-all',
+                  {
+                    'bg-blue-500 text-white shadow-lg': queryType === 'single',
+                    'text-gray-400 hover:text-white': queryType !== 'single'
+                  }
+                )}
               >
-                Single Query
+                Single
               </button>
               <button
                 onClick={() => setQueryType('multiple')}
@@ -239,7 +242,7 @@ const GraphQL = () => {
                   : 'text-gray-400 hover:text-white'
                   }`)}
               >
-                Batch Query
+                Batch
               </button>
               <button
                 onClick={() => setQueryType('range')}
@@ -248,7 +251,7 @@ const GraphQL = () => {
                   : 'text-gray-400 hover:text-white'
                   }`)}
               >
-                Range Query
+                Range
               </button>
             </div>
           </div>
@@ -281,7 +284,7 @@ const GraphQL = () => {
                 <button
                   onClick={handleFetch}
                   disabled={loading}
-                  className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-medium shadow-lg"
+                  className="md:px-6 md:py-3 px-2 py-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-medium shadow-lg"
                 >
                   {loading ? 'Querying...' : `Query #${rangeStart}-${rangeEnd}`}
                 </button>
@@ -298,7 +301,7 @@ const GraphQL = () => {
                 <button
                   onClick={handleFetch}
                   disabled={loading}
-                  className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-medium shadow-lg"
+                  className="md:px-6 md:py-3 px-2 py-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-medium shadow-lg"
                 >
                   {loading ? 'Querying...' : 'Query'}
                 </button>
@@ -415,23 +418,23 @@ const GraphQL = () => {
               <h3 className="text-lg font-semibold text-white mb-4">API Statistics</h3>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
                 <div className="bg-gray-900/50 p-3 rounded-lg">
-                  <p className="text-2xl font-bold text-blue-400">{rawData.results}</p>
+                  <p className="text-xl md:text-2xl font-bold text-blue-400">{rawData.results}</p>
                   <p className="text-xs text-gray-400">Query Results</p>
                 </div>
                 <div className="bg-gray-900/50 p-3 rounded-lg">
-                  <p className="text-2xl font-bold text-green-400">{rawData.duration_ms}ms</p>
+                  <p className="text-xl md:text-2xl font-bold text-green-400">{rawData.duration_ms}ms</p>
                   <p className="text-xs text-gray-400">Response Time</p>
                 </div>
                 <div className="bg-gray-900/50 p-3 rounded-lg">
-                  <p className="text-2xl font-bold text-purple-400">{rawData.statistics.rows_read.toLocaleString()}</p>
+                  <p className="text-xl md:text-2xl font-bold text-purple-400">{rawData.statistics.rows_read.toLocaleString()}</p>
                   <p className="text-xs text-gray-400">Rows Read</p>
                 </div>
                 <div className="bg-gray-900/50 p-3 rounded-lg">
-                  <p className="text-2xl font-bold text-yellow-400">{(rawData.statistics.elapsed * 1000).toFixed(0)}ms</p>
+                  <p className="text-xl md:text-2xl font-bold text-yellow-400">{(rawData.statistics.elapsed * 1000).toFixed(0)}ms</p>
                   <p className="text-xs text-gray-400">Query Time</p>
                 </div>
                 <div className="bg-gray-900/50 p-3 rounded-lg">
-                  <p className="text-2xl font-bold text-cyan-400">
+                  <p className="text-xl md:text-2xl font-bold text-cyan-400">
                     {Math.round((Object.keys(imageUrls).filter(key => imageUrls[key]).length / Math.max(nftDataList.length, 1)) * 100)}%
                   </p>
                   <p className="text-xs text-gray-400">Image Load Rate</p>

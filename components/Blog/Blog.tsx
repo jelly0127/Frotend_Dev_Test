@@ -16,18 +16,18 @@ interface BlogProps {
 
 const Blog = ({ posts, categories, tags, featuredPost, regularPosts }: BlogProps) => {
   return (
-    <div className="min-h-screen h-full">
-      <div className="container mx-auto px-4 py-12">
+    <div className="min-h-screen h-full w-full border">
+      <div className="container mx-auto px-4 py-12 w-full">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="flex justify-between items-start mb-6">
-            <div className="flex-1"></div>
+          <div className=" flex flex-col md:flex-row justify-between md:items-start mb-6">
+            <div className="flex-1 md:flex hidden"></div>
             <div className="flex-1 text-center">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+              <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold text-white mb-4">
                 Our Blog
               </h1>
             </div>
-            <div className="flex-1 flex justify-end">
+            <div className="flex-1 flex md:justify-end justify-center">
               <div className="flex gap-2">
                 <Link
                   href="/blog/add"
@@ -57,7 +57,7 @@ const Blog = ({ posts, categories, tags, featuredPost, regularPosts }: BlogProps
           <div className="flex flex-wrap justify-center gap-4 mb-6">
             <Link
               href="/blog"
-              className="px-4 py-2 bg-[#FCD535] text-black/80 rounded-full hover:bg-[#FCD535]/80 transition-colors"
+              className="md:px-4 md:py-2 px-2 py-1 bg-[#FCD535] flex items-center justify-center text-black/80 rounded-full hover:bg-[#FCD535]/80 transition-colors"
             >
               All Posts ({posts.length})
             </Link>
@@ -65,7 +65,7 @@ const Blog = ({ posts, categories, tags, featuredPost, regularPosts }: BlogProps
               <Link
                 key={category}
                 href={`/blog/categories/${category.toLowerCase()}`}
-                className="px-4 py-2 bg-gray-700 text-gray-300 rounded-full hover:bg-gray-600 transition-colors"
+                className="md:px-4 md:py-2 px-2 py-1 bg-gray-700 flex items-center justify-center text-gray-300 rounded-full hover:bg-gray-600 transition-colors"
               >
                 {category}
               </Link>

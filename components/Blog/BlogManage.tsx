@@ -18,23 +18,23 @@ const BlogManage = ({ articles }: { articles: BlogPost[] }) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black">
-      <div className="container mx-auto px-4 py-12">
+      <div className="md:container mx-auto px-4 py-12 w-full">
         {/* Header */}
         <div className="mb-8">
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-4xl font-bold text-white">Article Management</h1>
-            <div className="flex gap-4">
+          <div className="flex flex-col md:flex-row gap-2 justify-between items-center mb-6">
+            <h1 className="text-2xl md:text-4xl font-bold text-white">Article Management</h1>
+            <div className="flex gap-4 justify-center md:justify-start">
               <Link
                 href="/blog/add"
-                className="px-6 py-3 bg-[#FCD535] text-black/80 rounded hover:bg-[#FCD535]/80 transition-colors"
+                className="md:px-6 md:py-3 px-2 py-1 bg-[#FCD535] flex items-center justify-center text-black/80 rounded hover:bg-[#FCD535]/80 transition-colors"
               >
-                Add New Article
+                Add New
               </Link>
               <Link
                 href="/blog"
-                className="px-6 py-3 bg-gray-300 text-black/80 rounded hover:bg-[#FCD535]/80 transition-colors"
+                className="md:px-6 md:py-3 px-2 py-1 bg-gray-300 flex items-center justify-center text-black/80 rounded hover:bg-[#FCD535]/80 transition-colors"
               >
-                Back to Blog
+                Back
               </Link>
             </div>
           </div>
@@ -46,19 +46,19 @@ const BlogManage = ({ articles }: { articles: BlogPost[] }) => {
               <div className="text-gray-400">Total Articles</div>
             </div>
             <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
-              <div className="text-2xl font-bold text-green-400">
+              <div className="text-xl md:text-2xl font-bold text-green-400">
                 {articles.filter(a => a.published).length}
               </div>
               <div className="text-gray-400">Published</div>
             </div>
             <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
-              <div className="text-2xl font-bold text-yellow-400">
+              <div className="text-xl md:text-2xl font-bold text-yellow-400">
                 {articles.filter(a => !a.published).length}
               </div>
               <div className="text-gray-400">Draft</div>
             </div>
             <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
-              <div className="text-2xl font-bold text-blue-400">
+              <div className="text-xl md:text-2xl font-bold text-blue-400">
                 {new Set(articles.map(a => a.category)).size}
               </div>
               <div className="text-gray-400">Category Count</div>
@@ -71,7 +71,7 @@ const BlogManage = ({ articles }: { articles: BlogPost[] }) => {
               <button
                 onClick={() => setFilter('all')}
                 className={classNames(
-                  'px-4 py-2 rounded transition-colors',
+                  'md:px-4 md:py-2 px-2 py-1 rounded transition-colors text-sm md:text-base',
                   {
                     'bg-[#FCD535] text-black/80': filter === 'all',
                     'bg-gray-700 text-gray-300 hover:bg-gray-600': filter !== 'all'
@@ -83,7 +83,7 @@ const BlogManage = ({ articles }: { articles: BlogPost[] }) => {
               <button
                 onClick={() => setFilter('published')}
                 className={classNames(
-                  'px-4 py-2 rounded transition-colors',
+                  'md:px-4 md:py-2 px-2 py-1 rounded transition-colors',
                   {
                     'bg-[#FCD535] text-black/80': filter === 'published',
                     'bg-gray-700 text-gray-300 hover:bg-gray-600': filter !== 'published'
@@ -144,7 +144,7 @@ const BlogManage = ({ articles }: { articles: BlogPost[] }) => {
                 key={article.slug}
                 className="bg-gray-800 rounded-lg p-6 border border-gray-700 hover:border-gray-600 transition-colors"
               >
-                <div className="flex justify-between items-start">
+                <div className="flex flex-col md:flex-row justify-between items-start gap-2">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
                       <h3 className="text-xl font-bold text-white">
@@ -156,10 +156,13 @@ const BlogManage = ({ articles }: { articles: BlogPost[] }) => {
                         </Link>
                       </h3>
                       <span
-                        className={`px-2 py-1 text-xs rounded ${article.published
-                          ? 'bg-green-600 text-white'
-                          : 'bg-yellow-600 text-white'
-                          }`}
+                        className={classNames(
+                          'md:px-2 md:py-1 px-1 py-0.5  text-xs rounded',
+                          {
+                            'bg-green-600 text-white': article.published,
+                            'bg-yellow-600 text-white': !article.published
+                          }
+                        )}
                       >
                         {article.published ? 'Published' : 'Draft'}
                       </span>
@@ -191,22 +194,22 @@ const BlogManage = ({ articles }: { articles: BlogPost[] }) => {
                     </div>
                   </div>
 
-                  <div className="flex gap-2 ml-4">
+                  <div className="flex gap-2 md:ml-4 ml-0">
                     <Link
                       href={`/blog/${article.slug}`}
-                      className="px-3 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition-colors"
+                      className="md:px-3 md:py-2 px-2 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition-colors"
                     >
                       View
                     </Link>
                     <Link
                       href={`/blog/edit/${article.slug}`}
-                      className="px-3 py-2 bg-green-600 text-white text-sm rounded hover:bg-green-700 transition-colors"
+                      className="md:px-3 md:py-2 px-2 py-1 bg-green-600 text-white text-sm rounded hover:bg-green-700 transition-colors"
                     >
                       Edit
                     </Link>
                     <button
                       onClick={() => handleDelete(article.slug, article.title)}
-                      className="px-3 py-2 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
+                      className="md:px-3 md:py-2 px-2 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
                     >
                       Delete
                     </button>

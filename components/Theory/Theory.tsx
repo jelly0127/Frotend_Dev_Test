@@ -76,10 +76,10 @@ const Theory = () => {
     <div className="min-h-screen h-full">
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             {theoryContent?.title || 'Frontend Developer Aptitude Test'}
           </h1>
-          <p className="text-gray-300 mb-4">
+          <p className="text-gray-300 mb-4 text-sm md:text-base">
             This is a collection of answers to theoretical questions.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
@@ -96,10 +96,10 @@ const Theory = () => {
           <div className='flex items-center justify-center mb-6'>
             <button
               onClick={handleDownload}
-              className="bg-[#FCD535] flex items-center justify-center text-black/80 px-6 py-3 rounded-md font-semibold hover:bg-[#FCD535]/80 transition-colors"
+              className="bg-[#FCD535] flex items-center justify-center text-black/80 md:px-6 md:py-3 px-2 py-2 rounded-md font-semibold hover:bg-[#FCD535]/80 transition-colors"
             >
-              <IoMdCloudDownload className="text-2xl" />
-              <span className='ml-2'>
+              <IoMdCloudDownload className="md:text-2xl text-xl" />
+              <span className='ml-2 text-sm md:text-base'>
                 Download Word Document
               </span>
             </button>

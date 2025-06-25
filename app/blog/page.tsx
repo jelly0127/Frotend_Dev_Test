@@ -29,6 +29,8 @@ export default async function BlogPage() {
   const regularPosts = posts.slice(1)
 
   return (
-    <Blog posts={posts} categories={categories} tags={tags} featuredPost={featuredPost} regularPosts={regularPosts} />
+    <div className="w-full h-full">
+      <Blog posts={posts} categories={categories} tags={tags} featuredPost={featuredPost} regularPosts={regularPosts} />
+    </div>
   )
 } 

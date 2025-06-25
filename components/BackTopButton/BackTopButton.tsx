@@ -19,7 +19,7 @@ const BackTopButton = () => {
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className='fixed bottom-10 right-5 bg-gray-500/80 rounded-full p-2'>
+      className='fixed bottom-16 right-5 bg-gray-500/80 rounded-full p-2'>
       <FaArrowUp className='text-white text-xl' />
     </button>
   );
