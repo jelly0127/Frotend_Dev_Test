@@ -307,7 +307,7 @@ export default function ArticleEditor({
             </div>
 
             {/* Right: Content Editor */}
-            <div className="space-y-6">
+            <div className="space-y-6 min-h-[500px] ">
               <div className="bg-gray-800 rounded-lg border border-gray-700 h-full">
                 <div className="flex flex-col h-full justify-between">
                   <div className="p-4 flex flex-col md:flex-row w-full justify-between border-b border-gray-700 gap-2">
@@ -344,7 +344,7 @@ export default function ArticleEditor({
                     <textarea
                       value={content}
                       onChange={(e) => setContent(e.target.value)}
-                      className="w-full  flex-1 px-6 py-4 bg-transparent text-white placeholder-gray-400 resize-none focus:outline-none"
+                      className="w-full h-full flex-1 px-6 py-4 bg-transparent text-white placeholder-gray-400 resize-none focus:outline-none"
                       placeholder="# Start writing...
 
 使用 Markdown 语法编写你的文章内容。

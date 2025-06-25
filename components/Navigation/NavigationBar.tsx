@@ -44,7 +44,7 @@ const NavigationBar = () => {
   return (
     <Suspense fallback={<></>}>
       <div className="sticky top-0 z-50 w-full border-b border-white/10">
-        <div className="flex h-16 w-full items-center gap-x-2   px-4 backdrop-blur-md sm:px-5 lg:px-6 xl:px-8">
+        <div className="flex md:h-16 h-14 w-full items-center gap-x-2   px-4 backdrop-blur-md sm:px-5 lg:px-6 xl:px-8">
           <Link
             href={'/'}
             className="flex items-center text-nowrap font-title text-[16px] font-bold uppercase leading-5 tracking-wide text-white lg:text-[28px]"

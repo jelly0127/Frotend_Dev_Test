@@ -2,10 +2,10 @@ import { CartItem, formatPrice } from '@/hooks/useShopSystem';
 import { Product } from '@/components/Cart/help';
 import React from 'react';
 import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card"
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 import Image from 'next/image';
 import classNames from 'classnames';
 
@@ -22,16 +22,19 @@ const ProductCard = ({ product, addItem }: { product: Product, addItem: (item: O
 
       </div>
       <h3 className="font-semibold  md:text-lg mb-2">{product.name}</h3>
-      <HoverCard>
-        <HoverCardTrigger>
-          <p className="text-muted-foreground mb-2 truncate underline">{product.description}</p>
-        </HoverCardTrigger>
-        <HoverCardContent
-          side='top'
-          className='bg-black p-1'>
-          <p className="text-muted-foreground mb-2  p-2 rounded-md">{product.description}</p>
-        </HoverCardContent>
-      </HoverCard>
+      <div className='w-full'>
+        <Popover>
+          <PopoverTrigger asChild>
+            <p className="text-muted-foreground mb-2 truncate underline cursor-pointer hover:text-foreground transition-colors line-clamp-2 overflow-hidden text-ellipsis">{product.description}</p>
+          </PopoverTrigger>
+          <PopoverContent
+            side='top'
+            className='bg-black p-1 max-w-xs z-50'>
+            <p className="text-muted-foreground mb-2 p-2 rounded-md text-sm break-words">{product.description}</p>
+          </PopoverContent>
+        </Popover>
+      </div>
+
       <p className="md:text-xl font-bold text-[#FCD535] mb-4">
         {formatPrice(product.price)}
       </p>

@@ -3,6 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { NFTItem, APIResponse, getBackupImageUrls, parseTokenIds } from './help';
 import NFTCard from './NFTCard';
 import classNames from 'classnames';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 
 const PUDGY_PENGUINS_CONTRACT = process.env.NEXT_PUBLIC_PUDGY_PENGUINS_CONTRACT;
 const THE_GRAPH_API_KEY = process.env.NEXT_PUBLIC_THE_GRAPH_TOKEN_API_KEY;
@@ -355,9 +360,18 @@ const GraphQL = () => {
                     {/* Name */}
                     <div className="mb-4">
                       <h3 className="text-lg font-bold text-white mb-1 truncate">{nftData.name}</h3>
-                      <p className="text-gray-400 text-xs leading-relaxed line-clamp-2">
-                        {nftData.description}
-                      </p>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <p className="text-gray-400 text-xs leading-relaxed line-clamp-2">
+                            {nftData.description}
+                          </p>
+                        </PopoverTrigger>
+                        <PopoverContent
+                          side='top'
+                          className='bg-black p-1 max-w-xs z-50'>
+                          <p className="text-muted-foreground mb-2 p-2 rounded-md text-sm break-words">{nftData.description}</p>
+                        </PopoverContent>
+                      </Popover>
                     </div>
 
                     {/* Owner Information */}

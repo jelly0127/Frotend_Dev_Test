@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { NFTItem } from './help';
 
+
 interface NFTCardProps {
   nftData: NFTItem;
   imageUrls: { [key: string]: string };
