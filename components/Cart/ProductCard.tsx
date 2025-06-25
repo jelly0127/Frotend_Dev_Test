@@ -25,7 +25,9 @@ const ProductCard = ({ product, addItem }: { product: Product, addItem: (item: O
       <div className='w-full'>
         <Popover>
           <PopoverTrigger asChild>
-            <p className="text-muted-foreground mb-2 underline cursor-pointer hover:text-foreground transition-colors line-clamp-2 overflow-hidden">{product.description}</p>
+            <div className="w-full">
+              <p className="text-muted-foreground mb-2 underline cursor-pointer hover:text-foreground transition-colors truncate w-full block">{product.description}</p>
+            </div>
           </PopoverTrigger>
           <PopoverContent
             side='top'
